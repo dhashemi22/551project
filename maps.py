@@ -1,3 +1,5 @@
+import streamlit as st
+from streamlit_folium import folium_static
 import pandas as pd
 import folium
 from folium import Choropleth, Circle, Marker
@@ -12,6 +14,37 @@ latlong = loca.loc[loca['state_name'] == "California"].reset_index(drop=True)
 
 data=data.rename(columns = {'County':'county'})
 new = pd.merge(data, latlong, on='county')
+
+
+with st.echo():
+    import streamlit as st
+    from streamlit_folium import folium_static
+    import folium
+
+    # 2017
+    m_17 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
+
+    def color_producer(val):
+        if val >= np.mean(new17['percentageGoodDays']):
+            return 'forestgreen'
+        else:
+            return 'darkred'
+
+# Add a bubble map to the base map
+    for i in range(0,len(new17)):
+        Circle(
+            location=[new17.iloc[i]['lat'], new17.iloc[i]['lng']],
+            radius=10000,
+            color=color_producer(new17.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new17.iloc[i]['Year'])+"<br> County: " + str(new17.iloc[i]['county'])+"<br> Percent of Good AQI Days/Year: " + str((int(new17.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_17)
+
+# Display the map
+    folium_static(m_17)
+
+
+
+
+
+
 
 # 2017
 m_17 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
