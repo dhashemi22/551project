@@ -32,6 +32,7 @@ yr = st.slider("Select Year", 2017, 2020)
 if yr == 2017:
     
     with st.echo():
+# 2017
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
@@ -57,6 +58,7 @@ if yr == 2017:
 
 elif yr == 2018:
     with st.echo():
+# 2018
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
@@ -85,6 +87,7 @@ elif yr == 2018:
 elif yr == 2019:
     
     with st.echo():
+# 2019
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
@@ -112,6 +115,7 @@ elif yr == 2019:
 elif yr == 2020:
 
     with st.echo():
+# 2020
         import streamlit as st
         from streamlit_folium import folium_static
         import folium
