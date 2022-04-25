@@ -9,6 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 data = pd.read_json("alldata.json")
 data["percentageGoodDays"] = data["Good Days"] / data["Days with AQI"]
@@ -139,14 +140,18 @@ elif yr == 2020:
 new = new[new['Year'] != 2021]
 
 
-plt.figure(figsize=(100,30))
+width = st.sidebar.slider("plot width", 1, 100, 3)
+height = st.sidebar.slider("plot height", 1, 40, 1)
+
+st.set_page_config(layout='wide')
+plt.subplots(figsize=(width,height))
 fig = sns.barplot(data=new, x='county', y='percentageGoodDays', hue='Year', palette="coolwarm")
 st.pyplot()
 
 
 
 plt.figure(figsize=(5,5))
-ax=sns.barplot(x='Year',y='Good Days',data=data)
+ax=sns.barplot(x='Year',y='Good Days',data=new)
 ax.set(xlabel='Year', ylabel='Avg Good AQI Days')
 st.pyplot()
 
