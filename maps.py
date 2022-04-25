@@ -16,6 +16,13 @@ data=data.rename(columns = {'County':'county'})
 new = pd.merge(data, latlong, on='county')
 
 
+new17=new.loc[new['Year'] == 2017]
+new18=new.loc[new['Year'] == 2018]
+new19=new.loc[new['Year'] == 2019]
+new20=new.loc[new['Year'] == 2020]
+new21=new.loc[new['Year'] == 2021]
+
+
 with st.echo():
     import streamlit as st
     from streamlit_folium import folium_static
