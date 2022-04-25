@@ -9,7 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-st.set_page_config(layout='wide')
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 data = pd.read_json("alldata.json")
