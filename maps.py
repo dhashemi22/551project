@@ -139,16 +139,16 @@ elif yr == 2020:
 new = new[new['Year'] != 2021]
 
 
-plt.figure(figsize=(30,20))
-sns.barplot(data=new, x='county', y='percentageGoodDays', hue='Year', palette="coolwarm")
-st.pyplot()
+plt.figure(figsize=(100,30))
+fig = sns.barplot(data=new, x='county', y='percentageGoodDays', hue='Year', palette="coolwarm")
+st.pyplot(fig)
 
 
 
 plt.figure(figsize=(5,5))
 ax=sns.barplot(x='Year',y='Good Days',data=data)
 ax.set(xlabel='Year', ylabel='Avg Good AQI Days')
-st.pyplot()
+st.pyplot(ax)
 
 
 
