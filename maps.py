@@ -7,7 +7,7 @@ from folium.plugins import HeatMap, MarkerCluster
 import math
 import numpy as np
 import seaborn as sns
-import matplotlib.plotly as plt
+import matplotlib.pyplot as plt
 
 
 data = pd.read_json("alldata.json")
