@@ -161,11 +161,5 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 
-plt.figure(figsize=(5,5))
-ax=sns.barplot(x='Year',y='Good Days',data=new)
-ax.set(xlabel='Year', ylabel='Avg Good AQI Days')
-st.pyplot()
-
-
 
 
