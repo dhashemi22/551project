@@ -141,8 +141,6 @@ elif yr == 2020:
 new = new[new['Year'] != 2021]
 
 
-width = st.sidebar.slider("plot width", 1, 100, 3)
-height = st.sidebar.slider("plot height", 1, 40, 1)
 
 
 import plotly.graph_objects as go
@@ -154,7 +152,14 @@ fig = go.Figure(data=[
     go.Bar(name='2020', x=new20['county'], y=new20['percentageGoodDays']),
 ])
 # Change the bar mode
-fig.update_layout(barmode='group')
+fig.update_layout()
+fig.update_layout(barmode='group',
+    title="Percentage of Good AQI Days by County per Year",
+    xaxis_title="County",
+    yaxis_title="Percentage of Good AQI Days",
+    legend_title="Year",
+    )
+)
 st.plotly_chart(fig, use_container_width=True)
 
 
