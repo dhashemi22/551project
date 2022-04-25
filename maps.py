@@ -145,9 +145,17 @@ width = st.sidebar.slider("plot width", 1, 100, 3)
 height = st.sidebar.slider("plot height", 1, 40, 1)
 
 
-plt.subplots(figsize=(width,height))
-fig = sns.barplot(data=new, x='county', y='percentageGoodDays', hue='Year', palette="coolwarm")
-st.pyplot()
+import plotly.graph_objects as go
+
+fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['percentageGoodDays']),
+    go.Bar(name='2018', x=new18['county'], y=new18['percentageGoodDays']),
+    go.Bar(name='2019', x=new19['county'], y=new19['percentageGoodDays']),
+    go.Bar(name='2020', x=new20['county'], y=new20['percentageGoodDays']),
+])
+# Change the bar mode
+fig.update_layout(barmode='group')
+st.plotly_chart(fig, use_container_width=True)
 
 
 
