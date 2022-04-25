@@ -5,6 +5,8 @@ import folium
 from folium import Choropleth, Circle, Marker
 from folium.plugins import HeatMap, MarkerCluster
 import math
+import numpy as np
+
 
 data = pd.read_json("alldata.json")
 data["percentageGoodDays"] = data["Good Days"] / data["Days with AQI"]
