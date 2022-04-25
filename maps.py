@@ -30,113 +30,108 @@ yr = st.slider("Select Year", 2017, 2020)
 
 
 if yr == 2017:
-    
-    with st.echo():
-# 2017
-        import streamlit as st
-        from streamlit_folium import folium_static
-        import folium
+    import streamlit as st
+    from streamlit_folium import folium_static
+    import folium
 
         # 2017
-        m_17 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
+    m_17 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
 
-        def color_producer(val):
-            if val >= np.mean(new17['percentageGoodDays']):
-                return 'forestgreen'
-            else:
-                return 'darkred'
+    def color_producer(val):
+        if val >= np.mean(new17['percentageGoodDays']):
+            return 'forestgreen'
+        else:
+            return 'darkred'
 
 # Add a bubble map to the base map
-        for i in range(0,len(new17)):
-            Circle(
-                location=[new17.iloc[i]['lat'], new17.iloc[i]['lng']],
-                radius=10000,
-                color=color_producer(new17.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new17.iloc[i]['Year'])+"<br> County: " + str(new17.iloc[i]['county'])+"<br> Percent of Good AQI Days/Year: " + str((int(new17.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_17)
+    for i in range(0,len(new17)):
+        Circle(
+            location=[new17.iloc[i]['lat'], new17.iloc[i]['lng']],
+            radius=10000,
+            color=color_producer(new17.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new17.iloc[i]['Year'])+"<br> County: " + str(new17.iloc[i]['county'])+"<br> Percent of Good AQI Days/Year: " + str((int(new17.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_17)
 
 # Display the map
-        folium_static(m_17)
+    folium_static(m_17)
 
 elif yr == 2018:
-    with st.echo():
+   
 # 2018
-        import streamlit as st
-        from streamlit_folium import folium_static
-        import folium
+    import streamlit as st
+    from streamlit_folium import folium_static
+    import folium
 
-# 2018
-        m_18 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
 
-        def color_producer(val):
-            if val >= np.mean(new18['percentageGoodDays']):
-                return 'forestgreen'
-            else:
-                return 'darkred'
+    m_18 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
+
+    def color_producer(val):
+        if val >= np.mean(new18['percentageGoodDays']):
+            return 'forestgreen'
+        else:
+            return 'darkred'
 
 # Add a bubble map to the base map
-        for i in range(0,len(new18)):
-            Circle(
-                location=[new18.iloc[i]['lat'], new18.iloc[i]['lng']],
-                radius=10000,
-                color=color_producer(new18.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new18.iloc[i]['Year'])+"<br> County: " + str(new18.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new18.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_18)
+    for i in range(0,len(new18)):
+        Circle(
+            location=[new18.iloc[i]['lat'], new18.iloc[i]['lng']],
+            radius=10000,
+            color=color_producer(new18.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new18.iloc[i]['Year'])+"<br> County: " + str(new18.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new18.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_18)
 
 # Display the map
-        folium_static(m_18)
+    folium_static(m_18)
 
 
 
 elif yr == 2019:
     
-    with st.echo():
-# 2019
-        import streamlit as st
-        from streamlit_folium import folium_static
-        import folium
 
-# 2018
 # 2019
-        m_19 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
+    import streamlit as st
+    from streamlit_folium import folium_static
+    import folium
 
-        def color_producer(val):
-            if val >= np.mean(new19['percentageGoodDays']):
-                return 'forestgreen'
-            else:
-                return 'darkred'
+
+    m_19 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
+
+    def color_producer(val):
+        if val >= np.mean(new19['percentageGoodDays']):
+            return 'forestgreen'
+        else:
+            return 'darkred'
 
 # Add a bubble map to the base map
-        for i in range(0,len(new19)):
-            Circle(
-                location=[new19.iloc[i]['lat'], new19.iloc[i]['lng']],
-                radius=10000,
-                color=color_producer(new19.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new19.iloc[i]['Year'])+"<br> County: " + str(new19.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new19.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_19)
+    for i in range(0,len(new19)):
+        Circle(
+            location=[new19.iloc[i]['lat'], new19.iloc[i]['lng']],
+            radius=10000,
+            color=color_producer(new19.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new19.iloc[i]['Year'])+"<br> County: " + str(new19.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new19.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_19)
 
 # Display the map
-        folium_static(m_19)
+    folium_static(m_19)
 
 elif yr == 2020:
 
-    with st.echo():
 # 2020
-        import streamlit as st
-        from streamlit_folium import folium_static
-        import folium
+    import streamlit as st
+    from streamlit_folium import folium_static
+    import folium
 
-        m_20 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
+    m_20 = folium.Map(location=[36.7783,-119.4179], tiles='cartodbpositron', zoom_start=6, tooltip = 'This tooltip will appear on hover')
 
-        def color_producer(val):
-            if val >= np.mean(new20['percentageGoodDays']):
-                return 'forestgreen'
-            else:
-                return 'darkred'
+    def color_producer(val):
+        if val >= np.mean(new20['percentageGoodDays']):
+            return 'forestgreen'
+        else:
+            return 'darkred'
 
 # Add a bubble map to the base map
-        for i in range(0,len(new20)):
-            Circle(
-                location=[new20.iloc[i]['lat'], new20.iloc[i]['lng']],
-                radius=10000,
-                color=color_producer(new20.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new20.iloc[i]['Year'])+"<br> County: " + str(new20.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new20.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_20)
+    for i in range(0,len(new20)):
+        Circle(
+            location=[new20.iloc[i]['lat'], new20.iloc[i]['lng']],
+            radius=10000,
+            color=color_producer(new20.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new20.iloc[i]['Year'])+"<br> County: " + str(new20.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new20.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_20)
 
 # Display the map
-        folium_static(m_20)
+    folium_static(m_20)
 
 
 
