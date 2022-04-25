@@ -9,6 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+st.set_page_config(layout='wide')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 data = pd.read_json("alldata.json")
@@ -143,7 +144,7 @@ new = new[new['Year'] != 2021]
 width = st.sidebar.slider("plot width", 1, 100, 3)
 height = st.sidebar.slider("plot height", 1, 40, 1)
 
-st.set_page_config(layout='wide')
+
 plt.subplots(figsize=(width,height))
 fig = sns.barplot(data=new, x='county', y='percentageGoodDays', hue='Year', palette="coolwarm")
 st.pyplot()
