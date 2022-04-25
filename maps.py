@@ -6,6 +6,8 @@ from folium import Choropleth, Circle, Marker
 from folium.plugins import HeatMap, MarkerCluster
 import math
 import numpy as np
+import seaborn as sns
+import matplotlib.plotly as plt
 
 
 data = pd.read_json("alldata.json")
@@ -48,7 +50,7 @@ if yr == 2017:
         Circle(
             location=[new17.iloc[i]['lat'], new17.iloc[i]['lng']],
             radius=10000,
-            color=color_producer(new17.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new17.iloc[i]['Year'])+"<br> County: " + str(new17.iloc[i]['county'])+"<br> Percent of Good AQI Days/Year: " + str((int(new17.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_17)
+            color=color_producer(new17.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new17.iloc[i]['Year'])+"<br> County: " + str(new17.iloc[i]['county'])+"<br> Percent of Good AQI Days/Year: " + str((int(new17.iloc[i]['percentageGoodDays']*100)))+"%", popup = new17.iloc[i]).add_to(m_17)
 
 # Display the map
     folium_static(m_17)
@@ -74,7 +76,7 @@ elif yr == 2018:
         Circle(
             location=[new18.iloc[i]['lat'], new18.iloc[i]['lng']],
             radius=10000,
-            color=color_producer(new18.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new18.iloc[i]['Year'])+"<br> County: " + str(new18.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new18.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_18)
+            color=color_producer(new18.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new18.iloc[i]['Year'])+"<br> County: " + str(new18.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new18.iloc[i]['percentageGoodDays']*100)))+"%", popup = new18.iloc[i]).add_to(m_18)
 
 # Display the map
     folium_static(m_18)
@@ -103,7 +105,7 @@ elif yr == 2019:
         Circle(
             location=[new19.iloc[i]['lat'], new19.iloc[i]['lng']],
             radius=10000,
-            color=color_producer(new19.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new19.iloc[i]['Year'])+"<br> County: " + str(new19.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new19.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_19)
+            color=color_producer(new19.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new19.iloc[i]['Year'])+"<br> County: " + str(new19.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new19.iloc[i]['percentageGoodDays']*100)))+"%", popup = new19.iloc[i]).add_to(m_19)
 
 # Display the map
     folium_static(m_19)
@@ -128,11 +130,24 @@ elif yr == 2020:
         Circle(
             location=[new20.iloc[i]['lat'], new20.iloc[i]['lng']],
             radius=10000,
-            color=color_producer(new20.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new20.iloc[i]['Year'])+"<br> County: " + str(new20.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new20.iloc[i]['percentageGoodDays']*100)))+"%").add_to(m_20)
+            color=color_producer(new20.iloc[i]['percentageGoodDays']), tooltip = "Year: "+ str(new20.iloc[i]['Year'])+"<br> County: " + str(new20.iloc[i]['county'])+"<br> Percentage Good AQI Days/Year: " + str((int(new20.iloc[i]['percentageGoodDays']*100)))+"%", popup = new20.iloc[i]).add_to(m_20)
 
 # Display the map
     folium_static(m_20)
 
+
+new = new[new['Year'] != 2021]
+
+
+plt.figure(figsize=(30,20))
+sns.barplot(data=new, x='county', y='percentageGoodDays', hue='Year', palette="coolwarm")
+
+
+
+
+plt.figure(figsize=(5,5))
+ax=sns.barplot(x='Year',y='Good Days',data=data)
+ax.set(xlabel='Year', ylabel='Avg Good AQI Days')
 
 
 
