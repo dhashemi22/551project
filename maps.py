@@ -22,7 +22,7 @@ data = pd.DataFrame.from_dict(d)
 
 data["percentageGoodDays"] = data["Good Days"] / data["Days with AQI"]
 
-data=data.rename(columns = {'County':'county'})
+new=data.rename(columns = {'County':'county'})
 
 
 
