@@ -8,18 +8,22 @@ import math
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import requests
 
 st.set_page_config(layout='wide')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-data = pd.read_json("alldata.json")
+
+url = "https://dsci551-7ef30-default-rtdb.firebaseio.com/.json"
+response = requests.get(url)
+d = response.json()
+data = pd.DataFrame.from_dict(d)
+
+
 data["percentageGoodDays"] = data["Good Days"] / data["Days with AQI"]
 
-loca = pd.read_csv("uscounties.csv")
-latlong = loca.loc[loca['state_name'] == "California"].reset_index(drop=True)
-
 data=data.rename(columns = {'County':'county'})
-new = pd.merge(data, latlong, on='county')
+
 
 
 new17=new.loc[new['Year'] == 2017]
