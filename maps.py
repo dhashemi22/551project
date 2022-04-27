@@ -226,3 +226,139 @@ elif option == "Unhealthy":
     st.plotly_chart(fig, use_container_width=True)
 
 
+
+option2 = st.selectbox("Specific Toxins", ("Carbon Dioxide (CO2)", "Nitrogen Dioxide (NO2)", "Ozone", "PM10", "PM2.5", "Sulfur Dioxide (SO2)"))
+
+
+
+if option2 == "Carbon Dioxide (CO2)":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Days CO']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Days CO']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Days CO']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Days CO']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Days Carbon Dioxide Present by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of Carbon Dioxide Present Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option2 == "Nitrogen Dioxide (NO2)":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Days NO2']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Days NO2']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Days NO2']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Days NO2']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Days Nitrogen Dioxide Present by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number Nitrogen Dioxide Present Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option2 == "Ozone":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Days Ozone']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Days Ozone']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Days Ozone']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Days Ozone']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Ozone Days Present by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of Ozone Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option2 == "PM10":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Days PM10']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Days PM10']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Days PM10']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Days PM10']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Days PM10 Present by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of PM10 Present Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option2 == "PM2.5":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Days PM2andhalf']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Days PM2andhalf']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Days PM2andhalf']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Days PM2andhalf']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Days PM2.5 Present by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number PM2.5 Present Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option2 == "Sulfur Dioxide (SO2)":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Days SO2]),
+    go.Bar(name='2018', x=new18['county'], y=new18['Days SO2']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Days SO2']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Days SO2']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Days Sulfur Dioxide Present by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of Sulfur Dioxide Present Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
