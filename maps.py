@@ -328,7 +328,7 @@ elif option2 == "PM2.5":
 
 elif option2 == "Sulfur Dioxide (SO2)":
     fig = go.Figure(data=[
-    go.Bar(name='2017', x=new17['county'], y=new17['Days SO2]),
+    go.Bar(name='2017', x=new17['county'], y=new17['Days SO2']),
     go.Bar(name='2018', x=new18['county'], y=new18['Days SO2']),
     go.Bar(name='2019', x=new19['county'], y=new19['Days SO2']),
     go.Bar(name='2020', x=new20['county'], y=new20['Days SO2']),
