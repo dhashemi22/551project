@@ -24,7 +24,7 @@ data["percentageGoodDays"] = data["Good Days"] / data["Days with AQI"]
 
 new=data.rename(columns = {'County':'county'})
 
-
+new['UH Days'] = new['Unhealthy Days'] + new['Very Unhealthy Days']
 
 new17=new.loc[new['Year'] == 2017]
 new18=new.loc[new['Year'] == 2018]
@@ -34,6 +34,9 @@ new21=new.loc[new['Year'] == 2021]
 
 
 st.title("Air Quality in California Counties")
+st.text("Please select a year.")
+st.text("This map shows the percentage of Good Air Quality Index Days per year in each county.")
+st.text("The green dots are counties with above average AQI days per year, while the red dots are counties below average.")
 yr = st.slider("Select Year", 2017, 2020)
 
 
@@ -164,6 +167,62 @@ fig.update_layout(barmode='group',
 st.plotly_chart(fig, use_container_width=True)
 
 
+option = st.selectbox("AQI Level of Concern", ("Moderate", "Unhealthy for Sensitive Groups", "Unhealthy"))
 
+if option == "Moderate":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Moderate Days']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Moderate Days']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Moderate Days']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Moderate Days']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Moderate AQI Days by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of Moderate AQI Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option == "Unhealthy for Sensitive Groups":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['Unhealthy for Sensitive Groups Days']),
+    go.Bar(name='2018', x=new18['county'], y=new18['Unhealthy for Sensitive Groups Days']),
+    go.Bar(name='2019', x=new19['county'], y=new19['Unhealthy for Sensitive Groups Days']),
+    go.Bar(name='2020', x=new20['county'], y=new20['Unhealthy for Sensitive Groups Days']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Unhealthy for Sensitive Groups AQI Days by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of Unhealthy for Sensitive Groups AQI Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
+
+
+elif option == "Unhealthy":
+    fig = go.Figure(data=[
+    go.Bar(name='2017', x=new17['county'], y=new17['UH Days']),
+    go.Bar(name='2018', x=new18['county'], y=new18['UH Days']),
+    go.Bar(name='2019', x=new19['county'], y=new19['UH Days']),
+    go.Bar(name='2020', x=new20['county'], y=new20['UH Days']),
+    ])
+# Change the bar mode
+    fig.update_layout(barmode='group')
+    fig.show()
+
+    fig.update_layout(barmode='group',
+    title="Unhealthy AQI Days by County per Year",
+    xaxis_title="County",
+    yaxis_title="Number of Unhealthy AQI Days",
+    legend_title="Year")
+    st.plotly_chart(fig, use_container_width=True)
 
 
